@@ -5,13 +5,14 @@ echo Installing Redis...
 apt_install build-essential tcl
 
 cd $STORAGE_ROOT/nomp/nomp_setup/tmp
+sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/nomp/nomp_setup/tmp
 hide_ouput curl -O http://download.redis.io/redis-stable.tar.gz
 hide_output tar xzvf redis-stable.tar.gz
 cd redis-stable
 hide_output make
 hide_ouput sudo make install
 sudo mkdir /etc/redis
-sudo cp /tmp/redis-stable/redis.conf /etc/redis
+sudo cp -r $STORAGE_ROOT/nomp/nomp_setup/tmp/redis-stable/redis.conf /etc/redis
 
 sudo sed -i 's/supervised no/supervised systemd/g' /etc/redis/redis.conf
 sudo sed -i 's|dir ./|dir /var/lib/redis|g' /etc/redis/redis.conf

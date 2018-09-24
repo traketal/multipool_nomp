@@ -4,7 +4,7 @@
 # Updated by cryptopool.builders for crypto use...
 #####################################################
 
-source /etc/functions.sh # load our functions
+source /etc/functions.sh
 source /etc/multipool.conf
 # Ensure Python reads/writes files in UTF-8. If the machine
 # triggers some other locale in Python, like ASCII encoding,
@@ -30,7 +30,10 @@ if [ ! -d $STORAGE_ROOT/nomp/nomp_setup ]; then
 sudo mkdir -p $STORAGE_ROOT/nomp/nomp_setup
 sudo mkdir -p $STORAGE_ROOT/nomp/site
 sudo mkdir -p $STORAGE_ROOT/wallets
+sudo mkdir -p $HOME/multipool/daemon_builder
 fi
+sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/nomp
+sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/wallets
 
 # Start the installation.
 source questions.sh
@@ -39,6 +42,7 @@ source db.sh
 source web.sh
 source daemon.sh
 source build_coin.sh
+source nomp.sh
 source motd.sh
 source server_harden.sh
 

@@ -138,6 +138,21 @@ exit
 fi
 fi
 
+if [ -z "$AdminPass" ]; then
+DEFAULT_AdminPass=$(openssl rand -base64 8 | tr -d "=+/")
+input_box "Admin Password" \
+"Enter your new Admin password or use this randomly system generated one.
+\n\nUnfortunatley dialog doesnt let you copy. So you have to write it down.
+\n\nAdmin password:" \
+$DEFAULT_AdminPass \
+AdminPass
+
+if [ -z "$AdminPass" ]; then
+# user hit ESC/cancel
+exit
+fi
+fi
+
 if [ -z "$coinrepo" ]; then
 DEFAULT_coinrepo="github"
 input_box "Default Coin Repo" \
@@ -155,6 +170,48 @@ exit
 fi
 fi
 
+RESULT=$(dialog --stdout --title "Ultimate Crypto-Server Daemon Installer" --menu "Choose one" -1 60 4 \
+1 "Build coin with Berkeley 4.x" \
+2 "Build coin with Berkeley 5.x" \
+3 "Build coin with makefile.unix" \
+4 Exit)
+if [ $RESULT = ]
+then
+exit ;
+fi
+
+if [ $RESULT = 1 ]
+then
+clear;
+echo '
+autogen=true
+berkeley="4.8"
+' | sudo -E tee $HOME/multipool/daemon_builder/.my.cnf >/dev/null 2>&1;
+fi
+
+if [ $RESULT = 2 ]
+then
+clear;
+echo '
+autogen=true
+berkeley="5.3"
+' | sudo -E tee $HOME/multipool/daemon_builder/.my.cnf >/dev/null 2>&1;
+fi
+
+if [ $RESULT = 3 ]
+then
+clear;
+echo '
+autogen=false
+' | sudo -E tee $HOME/multipool/daemon_builder/.my.cnf >/dev/null 2>&1;
+fi
+
+if [ $RESULT = 4 ]
+then
+clear;
+exit;
+fi
+
 # Save the global options in $STORAGE_ROOT/yiimp/.yiimp.conf so that standalone
 # tools know where to look for data.
 echo 'STORAGE_USER='"${STORAGE_USER}"'
@@ -168,6 +225,7 @@ coinname='"${coinname}"'
 coinsymbol='"${coinsymbol}"'
 coinalgo='"${coinalgo}"'
 cointime='"${cointime}"'
+AdminPass='"${AdminPass}"'
 
 # Unless you do some serious modifications this installer will not work with any other repo of nomp!
 coinrepo='"${coinrepo}"'
