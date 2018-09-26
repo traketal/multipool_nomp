@@ -1,3 +1,7 @@
+#####################################################
+# Created by cryptopool.builders for crypto use...
+#####################################################
+
 source /etc/functions.sh
 source $STORAGE_ROOT/nomp/.nomp.conf
 
@@ -46,4 +50,5 @@ sudo rm -r openssl-1.0.2g.tar.gz openssl-1.0.2g
 
 
 echo Daemon setup completed...
+
 cd $HOME/multipool/nomp

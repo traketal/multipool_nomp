@@ -1,3 +1,10 @@
+#####################################################
+# Source various web sources:
+# https://www.linuxbabe.com/ubuntu/enable-google-tcp-bbr-ubuntu
+# https://www.cyberciti.biz/faq/linux-tcp-tuning/
+# Created by cryptopool.builders for crypto use...
+#####################################################
+
 source /etc/functions.sh
 source /etc/multipool.conf
 

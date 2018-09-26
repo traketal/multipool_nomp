@@ -150,3 +150,5 @@ sudo rm -r $HOME/multipool/daemon_builder/.my.cnf
 
 echo 'rpcpassword='"'"''"${rpcpassword}"''"'"'
 rpcport='"'"''"${rpcport}"''"'"''| sudo -E tee $HOME/multipool/daemon_builder/.my.cnf
+
+cd $HOME/multipool/nomp

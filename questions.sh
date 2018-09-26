@@ -1,5 +1,7 @@
+#####################################################
 # Source https://mailinabox.email/ https://github.com/mail-in-a-box/mailinabox
 # Updated by cryptopool.builders for crypto use...
+#####################################################
 
 source /etc/functions.sh
 source /etc/multipool.conf
@@ -214,18 +216,18 @@ fi
 
 # Save the global options in $STORAGE_ROOT/yiimp/.yiimp.conf so that standalone
 # tools know where to look for data.
-echo 'STORAGE_USER='"${STORAGE_USER}"'
-STORAGE_ROOT='"${STORAGE_ROOT}"'
-DomainName='"${DomainName}"'
-StratumURL='"${StratumURL}"'
-SupportEmail='"${SupportEmail}"'
-UsingSubDomain='"${UsingSubDomain}"'
-InstallSSL='"${InstallSSL}"'
-coinname='"${coinname}"'
-coinsymbol='"${coinsymbol}"'
-coinalgo='"${coinalgo}"'
-cointime='"${cointime}"'
-AdminPass='"${AdminPass}"'
+echo 'STORAGE_USER='"'"''"${STORAGE_USER}"''"'"'
+STORAGE_ROOT='"'"''"${STORAGE_ROOT}"''"'"'
+DomainName='"'"''"${DomainName}"''"'"'
+StratumURL='"'"''"${StratumURL}"''"'"'
+SupportEmail='"'"''"${SupportEmail}"''"'"'
+UsingSubDomain='"'"''"${UsingSubDomain}"''"'"'
+InstallSSL='"'"''"${InstallSSL}"''"'"'
+coinname='"'"''"${coinname}"''"'"'
+coinsymbol='"'"''"${coinsymbol}"''"'"'
+coinalgo='"'"''"${coinalgo}"''"'"'
+cointime='"'"''"${cointime}"''"'"'
+AdminPass='"'"''"${AdminPass}"''"'"'
 
 # Unless you do some serious modifications this installer will not work with any other repo of nomp!
 coinrepo='"${coinrepo}"'

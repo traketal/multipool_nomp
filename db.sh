@@ -1,3 +1,7 @@
+#####################################################
+# Created by cryptopool.builders for crypto use...
+#####################################################
+
 source /etc/functions.sh
 source $STORAGE_ROOT/nomp/.nomp.conf
 
@@ -5,7 +9,6 @@ echo Installing Redis...
 apt_install build-essential tcl
 
 cd $STORAGE_ROOT/nomp/nomp_setup/tmp
-sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/nomp/nomp_setup/tmp
 hide_ouput curl -O http://download.redis.io/redis-stable.tar.gz
 hide_output tar xzvf redis-stable.tar.gz
 cd redis-stable
@@ -38,6 +41,8 @@ sudo mkdir /var/lib/redis
 sudo chown redis:redis /var/lib/redis
 sudo chmod 770 /var/lib/redis
 sudo systemctl start redis
+sudo systemctl enable redis
 
 echo Database build complete...
+
 cd $HOME/multipool/nomp

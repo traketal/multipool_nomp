@@ -1,4 +1,5 @@
 #!/bin/bash
+#####################################################
 # This is the entry point for configuring the system.
 # Source https://mailinabox.email/ https://github.com/mail-in-a-box/mailinabox
 # Updated by cryptopool.builders for crypto use...
@@ -28,12 +29,15 @@ export NCURSES_NO_UTF8_ACS=1
 echo Creating the temporary NOMP installation folder...
 if [ ! -d $STORAGE_ROOT/nomp/nomp_setup ]; then
 sudo mkdir -p $STORAGE_ROOT/nomp/nomp_setup
+sudo mkdir -p $STORAGE_ROOT/nomp/nomp_setup/tmp
 sudo mkdir -p $STORAGE_ROOT/nomp/site
+sudo mkdir -p $STORAGE_ROOT/nomp/starts
 sudo mkdir -p $STORAGE_ROOT/wallets
 sudo mkdir -p $HOME/multipool/daemon_builder
 fi
 sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/nomp
 sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/wallets
+sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/nomp/nomp_setup/tmp
 
 # Start the installation.
 source questions.sh
@@ -45,11 +49,11 @@ source build_coin.sh
 source nomp.sh
 source motd.sh
 source server_harden.sh
+source server_cleanup.sh
 
 clear
 echo Installation of your NOMP single server is now completed.
 echo You *MUST* reboot the machine to finalize the machine updates and folder permissions! NOMP will not function until a reboot is performed!
 echo
-echo You can access your admin panel at, http://$DomainName/site/$AdminPanel
 echo
 echo By default all stratum ports are blocked by the firewall. To allow a port through, from the command prompt type sudo ufw allow port number.

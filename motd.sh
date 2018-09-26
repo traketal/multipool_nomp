@@ -1,3 +1,7 @@
+#####################################################
+# Created by cryptopool.builders for crypto use...
+#####################################################
+
 source /etc/functions.sh # load our functions
 
 apt_install lsb-release figlet update-motd \
@@ -17,4 +21,5 @@ run-parts /etc/update-motd.d/ | sudo tee /etc/motd
 ' | sudo -E tee /usr/bin/motd >/dev/null 2>&1
 
 sudo chmod +x /usr/bin/motd
+
 cd $HOME/multipool/nomp
