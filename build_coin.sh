@@ -130,8 +130,8 @@ rpcpassword=$(openssl rand -base64 29 | tr -d "=+/")
 rpcport=$(EPHYMERAL_PORT)
 
 echo 'rpcuser=NOMPrpc
-rpcpassword='"'"''"${rpcpassword}"''"'"'
-rpcport='"'"''"${rpcport}"''"'"'
+rpcpassword='${rpcpassword}'
+rpcport='${rpcport}'
 rpcthreads=8
 rpcallowip=127.0.0.1
 # onlynet=ipv4
@@ -148,7 +148,7 @@ sudo rm -r $STORAGE_ROOT/daemon_builder/temp_coin_builds/.lastcoin.conf
 sudo rm -r $STORAGE_ROOT/daemon_builder/temp_coin_builds/$coindir
 sudo rm -r $HOME/multipool/daemon_builder/.my.cnf
 
-echo 'rpcpassword='"'"''"${rpcpassword}"''"'"'
-rpcport='"'"''"${rpcport}"''"'"''| sudo -E tee $HOME/multipool/daemon_builder/.my.cnf
+echo 'rpcpassword='${rpcpassword}'
+rpcport='${rpcport}''| sudo -E tee $HOME/multipool/daemon_builder/.my.cnf
 
 cd $HOME/multipool/nomp
