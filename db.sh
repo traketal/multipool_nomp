@@ -9,11 +9,11 @@ echo Installing Redis...
 apt_install build-essential tcl
 
 cd $STORAGE_ROOT/nomp/nomp_setup/tmp
-hide_ouput curl -O http://download.redis.io/redis-stable.tar.gz
+hide_output curl -O http://download.redis.io/redis-stable.tar.gz
 hide_output tar xzvf redis-stable.tar.gz
 cd redis-stable
 hide_output make
-hide_ouput sudo make install
+hide_output sudo make install
 sudo mkdir /etc/redis
 sudo cp -r $STORAGE_ROOT/nomp/nomp_setup/tmp/redis-stable/redis.conf /etc/redis
 
@@ -36,7 +36,7 @@ Restart=always
 WantedBy=multi-user.target
 ' | sudo -E tee /etc/systemd/system/redis.service >/dev/null 2>&1
 
-hide_ouput sudo adduser --system --group --no-create-home redis
+hide_output sudo adduser --system --group --no-create-home redis
 sudo mkdir /var/lib/redis
 sudo chown redis:redis /var/lib/redis
 sudo chmod 770 /var/lib/redis
