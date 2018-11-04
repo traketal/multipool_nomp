@@ -36,6 +36,7 @@ sudo mkdir -p $STORAGE_ROOT/wallets
 sudo mkdir -p $HOME/multipool/daemon_builder
 fi
 sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/nomp
+sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/nomp/site
 sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/wallets
 sudo setfacl -m u:$USER:rwx $STORAGE_ROOT/nomp/nomp_setup/tmp
 
