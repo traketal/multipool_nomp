@@ -34,7 +34,7 @@ sudo sed -i 's/PASSWORD/'$AdminPass'/g' config.json
 
 # Create the coin json file
 cd $STORAGE_ROOT/nomp/site/pool_configs
-sudo cp -r base_samp.json $coinname.json
+sudo cp -r base_samp.json.x $coinname.json
 
 # Generate our random ports
 randportlow=$(EPHYMERAL_PORT)

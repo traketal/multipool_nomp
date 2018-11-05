@@ -143,6 +143,12 @@ gen=0
 echo "Starting ${coind::-1}"
 /usr/bin/"${coind}" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" -daemon -shrinkdebugfile
 
+# Create easy daemon start file
+echo '
+/usr/bin/"${coind}" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" -daemon -shrinkdebugfile
+' | sudo -E tee /usr/bin/"${coind::-1}" >/dev/null 2>&1
+sudo chmod +x /usr/bin/"${coind::-1}"
+
 # If we made it this far everything built fine removing last coin.conf and build directory
 sudo rm -r $STORAGE_ROOT/daemon_builder/temp_coin_builds/.lastcoin.conf
 sudo rm -r $STORAGE_ROOT/daemon_builder/temp_coin_builds/$coindir
