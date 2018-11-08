@@ -145,7 +145,7 @@ echo "Starting ${coind::-1}"
 
 # Create easy daemon start file
 echo '
-/usr/bin/"${coind}" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" -daemon -shrinkdebugfile
+"${coind}" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" -daemon -shrinkdebugfile
 ' | sudo -E tee /usr/bin/"${coind::-1}" >/dev/null 2>&1
 sudo chmod +x /usr/bin/"${coind::-1}"
 

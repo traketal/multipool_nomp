@@ -7,6 +7,8 @@ source $STORAGE_ROOT/nomp/.nomp.conf
 
 echo Installing cron screens to crontab...
 (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /home/crypto-data/nomp/starts/nomp.start.sh") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot source /etc/functions.sh") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot source /etc/multipool.conf") | crontab -
 
 echo Creating NOMP startup script...
 echo '#!/bin/bash
