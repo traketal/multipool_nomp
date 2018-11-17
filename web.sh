@@ -14,7 +14,7 @@ if [[ ("$UsingSubDomain" == "y" || "$UsingSubDomain" == "Y" || "$UsingSubDomain"
 if [[ ("$InstallSSL" == "y" || "$InstallSSL" == "Y" || "$InstallSSL" == "yes" || "$InstallSSL" == "Yes" || "$InstallSSL" == "YES") ]]; then
 echo Installing LetsEncrypt and setting up SSL...
 apt_install letsencrypt
-hide_output sudo letsencrypt certonly --standalone --staging --webroot-path=$STORAGE_ROOT/nomp/site/ --email "$SupportEmail" --agree-tos -d "$DomainName"
+hide_output sudo letsencrypt certonly --standalone --webroot-path=$STORAGE_ROOT/nomp/site/ --email "$SupportEmail" --agree-tos -d "$DomainName"
 echo Generating DHPARAM, this may take awhile...
 hide_output sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 fi
@@ -23,7 +23,7 @@ fi
 if [[ ("$InstallSSL" == "y" || "$InstallSSL" == "Y" || "$InstallSSL" == "yes" || "$InstallSSL" == "Yes" || "$InstallSSL" == "YES") ]]; then
 echo Installing LetsEncrypt and setting up SSL...
 apt_install letsencrypt
-hide_output sudo letsencrypt certonly --standalone --staging --webroot-path=$STORAGE_ROOT/yiimp/site/web --email "$SupportEmail" --agree-tos -d "$DomainName" -d www."$DomainName"
+hide_output sudo letsencrypt certonly --standalone --webroot-path=$STORAGE_ROOT/yiimp/site/web --email "$SupportEmail" --agree-tos -d "$DomainName" -d www."$DomainName"
 echo Generating DHPARAM, this may take awhile...
 hide_output sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 fi
