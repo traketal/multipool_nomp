@@ -11,7 +11,7 @@ echo Installing cron screens to crontab...
 (crontab -l 2>/dev/null; echo "@reboot source /etc/multipool.conf") | crontab -
 
 echo Creating NOMP startup script...
-echo '#!/bin/bash
+echo '#!/usr/bin/env bash
 source /etc/multipool.conf
 ################################################################################
 # Author: cryptopool.builders
