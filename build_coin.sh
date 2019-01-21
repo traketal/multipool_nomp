@@ -139,14 +139,17 @@ maxconnections=12
 daemon=1
 gen=0
 ' | sudo -E tee $STORAGE_ROOT/wallets/."${coind::-1}"/"${coind::-1}".conf >/dev/null 2>&1
+' | sudo -E tee $HOME/."${coind::-1}"/"${coind::-1}".conf >/dev/null 2>&1
 
 echo "Starting ${coind::-1}"
 /usr/bin/veild -generateseed=1 -daemon=1
 /usr/bin/"${coind}" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" -daemon -shrinkdebugfile
+/usr/bin/"${coind}" -datadir=$HOME/."${coind::-1}" -conf="${coind::-1}.conf" -daemon -shrinkdebugfile
 
 # Create easy daemon start file
 echo '
 "${coind}" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" -daemon -shrinkdebugfile
+"${coind}" -datadir=$HOME/."${coind::-1}" -conf="${coind::-1}.conf" -daemon -shrinkdebugfile
 ' | sudo -E tee /usr/bin/"${coind::-1}" >/dev/null 2>&1
 sudo chmod +x /usr/bin/"${coind::-1}"
 
