@@ -121,7 +121,7 @@ fi
 hide_output sudo apt-get update
 apt_install build-essential libtool autotools-dev \
 autoconf pkg-config libssl-dev libboost-all-dev git \
-libminiupnpc-dev
+libminiupnpc-dev libgmp3-dev
 
 echo Installing Node 8.x
 cd $STORAGE_ROOT/nomp/nomp_setup/tmp
