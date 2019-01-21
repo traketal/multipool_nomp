@@ -43,9 +43,9 @@ randporthigh=$(EPHYMERAL_PORT)
 
 #Generate new wallet address
 if [[ ("$ifcoincli" == "y" || "$ifcoincli" == "Y") ]]; then
-wallet="$("${coind::-1}-cli" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" getnewaddress)"
+wallet="$("${coind::-1}-cli" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" getnewbasecoinaddress)"
 else
-wallet="$("${coind}" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" getnewaddress)"
+wallet="$("${coind}" -datadir=$STORAGE_ROOT/wallets/."${coind::-1}" -conf="${coind::-1}.conf" getnewbasecoinaddress)"
 fi
 
 # SED the coin file
