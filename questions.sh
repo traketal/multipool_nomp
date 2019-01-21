@@ -27,7 +27,7 @@ fi
 fi
 
 if [ -z "$InstallSSL" ]; then
-DEFAULT_InstallSSL=yes
+DEFAULT_InstallSSL=no
 input_box "Install SSL" \
 "Would you like the system to install SSL automatically?
 \n\nPlease answer (y)es or (n)o only:" \
@@ -85,7 +85,7 @@ fi
 fi
 
 if [ -z "$coinname" ]; then
-DEFAULT_coinname=Bitcoin
+DEFAULT_coinname=Veil
 input_box "Coin Name" \
 "Enter your first coins name..
 \n\nCoin Name:" \
@@ -99,7 +99,7 @@ fi
 fi
 
 if [ -z "$coinsymbol" ]; then
-DEFAULT_coinsymbol=BTC
+DEFAULT_coinsymbol=VEIL
 input_box "Coin Symbol" \
 "Enter your coins symbol..
 \n\nCoin Symbol:" \
@@ -113,7 +113,7 @@ fi
 fi
 
 if [ -z "$coinalgo" ]; then
-DEFAULT_coinalgo=sha256
+DEFAULT_coinalgo=x16rt
 input_box "Coin Algorithm" \
 "Enter your coins algorithm.. Enter as all lower case...
 \n\nCoin Algorithm:" \
@@ -127,7 +127,7 @@ fi
 fi
 
 if [ -z "$cointime" ]; then
-DEFAULT_cointime=120
+DEFAULT_cointime=60
 input_box "Coin Block Time" \
 "Enter your coins block time in seconds..
 \n\nCoin Block Time:" \
@@ -156,7 +156,7 @@ fi
 fi
 
 if [ -z "$coinrepo" ]; then
-DEFAULT_coinrepo="github"
+DEFAULT_coinrepo="https://github.com/Veil-Project/veil.git"
 input_box "Default Coin Repo" \
 "Enter your coins repo to use..
 \n\nIf you are using a private repo and do not specify the user name and password here, you will be promted
@@ -172,11 +172,9 @@ exit
 fi
 fi
 
-RESULT=$(dialog --stdout --title "Ultimate Crypto-Server Daemon Installer" --menu "Choose one" -1 60 4 \
+RESULT=$(dialog --stdout --title "Ultimate Crypto-Server Daemon Installer" --menu "Choose one" -1 60 2 \
 1 "Build coin with Berkeley 4.x" \
-2 "Build coin with Berkeley 5.x" \
-3 "Build coin with makefile.unix" \
-4 Exit)
+2 Exit)
 if [ $RESULT = ]
 then
 exit ;
@@ -192,23 +190,6 @@ berkeley="4.8"
 fi
 
 if [ $RESULT = 2 ]
-then
-clear;
-echo '
-autogen=true
-berkeley="5.3"
-' | sudo -E tee $HOME/multipool/daemon_builder/.my.cnf >/dev/null 2>&1;
-fi
-
-if [ $RESULT = 3 ]
-then
-clear;
-echo '
-autogen=false
-' | sudo -E tee $HOME/multipool/daemon_builder/.my.cnf >/dev/null 2>&1;
-fi
-
-if [ $RESULT = 4 ]
 then
 clear;
 exit;
