@@ -134,6 +134,6 @@ source ~/.profile
 hide_output nvm install 8.11.4
 hide_output nvm use 8.11.4
 echo Downloading NOMP Repo...
-hide_output sudo git clone https://github.com/traketal/NiceNOMP.git $STORAGE_ROOT/nomp/nomp_setup/nomp
+hide_output sudo git clone https://github.com/traketal/node-open-mining-portal.git $STORAGE_ROOT/nomp/nomp_setup/nomp
 
 cd $HOME/multipool/nomp
