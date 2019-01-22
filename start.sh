@@ -45,8 +45,8 @@ source questions.sh
 source system.sh
 source db.sh
 source web.sh
-source daemon.sh
-source build_coin.sh
+#source daemon.sh
+#source build_coin.sh
 source nomp.sh
 source motd.sh
 source server_harden.sh
